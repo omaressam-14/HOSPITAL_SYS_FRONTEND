@@ -1,0 +1,19 @@
+.feature {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 750px) {
+  .feature {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+}

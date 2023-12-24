@@ -1,0 +1,13 @@
+.navlink {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sidebar a.active {
+  color: #2793f9;
+}
+
+.sidebar {
+  font-size: 1.1rem;
+}
