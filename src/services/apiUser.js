@@ -73,3 +73,16 @@ export async function createEmplyee(body) {
 
   return data;
 }
+
+export async function deleteUser(id) {
+  const res = await fetch(`${baseURI}/user/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await res.text();
+
+  return data;
+}

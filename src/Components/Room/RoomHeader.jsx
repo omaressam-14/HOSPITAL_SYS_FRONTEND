@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DeleteConfirmation from "./DeleteConfirmation";
+import DeleteConfirmation from "../../utils/DeleteConfirmation";
 import { useDeleteRoom } from "./useRooms";
 
 function RoomHeader({ data, onEdit }) {

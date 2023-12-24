@@ -35,7 +35,7 @@ function Users() {
         data={users}
       />
       <UserRoleMenu setActive={setActiveRole} activeRole={activeRole} />
-      <div className="bg-blue-100 rounded-lg p-4 w-[100%] flex flex-col gap-4">
+      <div className="bg-gray-50 rounded-lg p-4 w-[100%] flex flex-col gap-4">
         {(filteredData?.length === 0 || users?.length === 0) && (
           <p className="text-center">No User Found</p>
         )}

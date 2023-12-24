@@ -1,11 +1,12 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   createEmplyee,
+  deleteUser,
   getAllPatients,
   getAllUsers,
+  getDoctor,
 } from "../../services/apiUser";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 export function useGetAllPatients() {
   const { data, isLoading, isError } = useQuery({
@@ -40,6 +41,32 @@ export function useCreateEmployee(onClose) {
     },
     onError: (err) => {
       console.log(err);
+    },
+  });
+
+  return { mutate, isLoading, isError };
+}
+
+export function useGetUser(id) {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["userDetail"],
+    queryFn: () => getDoctor(id),
+  });
+
+  return { data: data?.data, isLoading, isError };
+}
+
+export function useDeleteUser(onClose) {
+  const queryClient = useQueryClient();
+  const { mutate, isLoading, isError } = useMutation({
+    mutationFn: deleteUser,
+    onSuccess: () => {
+      toast.success("User Deleted Successfully");
+      queryClient.invalidateQueries("users");
+      onClose();
+    },
+    onError: () => {
+      toast.error("something went wrong");
     },
   });
 

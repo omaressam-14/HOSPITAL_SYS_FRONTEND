@@ -1,5 +1,5 @@
-import Backdrop from "../../utils/Backdrop";
-import Button from "../Button/Button";
+import Backdrop from "./Backdrop";
+import Button from "../Components/Button/Button";
 
 function DeleteConfirmation({ toggleForm, deleteFn, isLoading }) {
   return (

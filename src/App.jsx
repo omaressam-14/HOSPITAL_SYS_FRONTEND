@@ -22,6 +22,7 @@ import CreaetMedicine from "./views/CreaetMedicine";
 import Rooms from "./views/Rooms";
 import Room from "./views/Room";
 import Users from "./views/Users";
+import User from "./views/User";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
           <Route path="room" element={<Rooms />} />
           <Route path="room/:id" element={<Room />} />
           <Route path="users" element={<Users />} />
+          <Route path="users/:id" element={<User />} />
           <Route
             path="medical-record/create/:id"
             element={<CreateMedicalRecord />}
