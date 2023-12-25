@@ -14,7 +14,7 @@ function Users() {
   const [acitvePage, setActivePage] = useState(1);
   const [filteredData, setFilteredData] = useState("");
 
-  const { data, isLoading, refetch, isRefetching } = useGetAllUsers(
+  const { data, isLoading, refetch, isFetching } = useGetAllUsers(
     activeRole,
     acitvePage,
     limit
@@ -27,7 +27,7 @@ function Users() {
     [refetch, activeRole]
   );
 
-  if (isRefetching) return <Spinner />;
+  if (isFetching) return <Spinner />;
   if (isLoading) return <Spinner />;
 
   return (
