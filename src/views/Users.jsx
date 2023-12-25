@@ -5,17 +5,20 @@ import UserRoleMenu from "../Components/Users/UserRoleMenu";
 import Spinner from "../utils/Spinner";
 import SearchBar from "../utils/SearchBar";
 import CreateUserForm from "../Components/Users/CreateUserForm";
+import Pagination from "../utils/Pagination";
+import { RESULT_PER_PAGE } from "./../utils/CONSTANSTS";
 
 function Users() {
+  const limit = RESULT_PER_PAGE;
   const [activeRole, setActiveRole] = useState("");
+  const [acitvePage, setActivePage] = useState(1);
   const [filteredData, setFilteredData] = useState("");
 
-  const {
-    data: users,
-    isLoading,
-    refetch,
-    isRefetching,
-  } = useGetAllUsers(activeRole);
+  const { data, isLoading, refetch, isRefetching } = useGetAllUsers(
+    activeRole,
+    acitvePage,
+    limit
+  );
 
   useEffect(
     function () {
@@ -32,21 +35,26 @@ function Users() {
       <SearchBar
         CreateComponent={CreateUserForm}
         setFilteredData={setFilteredData}
-        data={users}
+        data={data?.data}
       />
-      <UserRoleMenu setActive={setActiveRole} activeRole={activeRole} />
+      <UserRoleMenu
+        setActivePage={setActivePage}
+        setActive={setActiveRole}
+        activeRole={activeRole}
+      />
       <div className="bg-gray-50 rounded-lg p-4 w-[100%] flex flex-col gap-4">
-        {(filteredData?.length === 0 || users?.length === 0) && (
+        {(filteredData?.length === 0 || data?.results === 0) && (
           <p className="text-center">No User Found</p>
         )}
         {filteredData
           ? filteredData?.map((user) => {
               return <UserCard key={user._id} user={user} />;
             })
-          : users?.map((user) => {
+          : data?.data?.map((user) => {
               return <UserCard key={user._id} user={user} />;
             })}
       </div>
+      <Pagination count={data?.totalResults} setActivePage={setActivePage} />
     </div>
   );
 }

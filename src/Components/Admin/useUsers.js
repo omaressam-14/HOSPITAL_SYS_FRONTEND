@@ -17,13 +17,30 @@ export function useGetAllPatients() {
   return { data: data?.data, isLoading, isError };
 }
 
-export function useGetAllUsers(role) {
-  const { data, isLoading, isError, refetch, isRefetching } = useQuery({
-    queryKey: ["users"],
-    queryFn: () => getAllUsers(role),
+export function useGetAllUsers(role, page, limit) {
+  const {
+    data,
+    isLoading,
+    isError,
+    refetch,
+    isRefetching,
+    isFetching,
+    isPreviousData,
+  } = useQuery({
+    queryKey: ["users", role, page],
+    queryFn: () => getAllUsers(role, page, limit),
+    keepPreviousData: true,
   });
 
-  return { data: data?.data, isLoading, isError, refetch, isRefetching };
+  return {
+    data,
+    isLoading,
+    isError,
+    refetch,
+    isRefetching,
+    isFetching,
+    isPreviousData,
+  };
 }
 
 export function useCreateEmployee(onClose) {

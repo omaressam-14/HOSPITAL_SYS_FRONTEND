@@ -46,16 +46,33 @@ export async function getAllPatients() {
   return data;
 }
 
-export async function getAllUsers(role) {
-  const res = await fetch(`${baseURI}/user${role ? `?role=${role}` : ""}`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export async function getAllUsers(role, page, limit) {
+  const totalCountRes = await fetch(
+    `${baseURI}/user?${role ? `role=${role}` : ""}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  const d = await totalCountRes.json();
+  const totalCount = d.results;
+
+  const res = await fetch(
+    `${baseURI}/user?${page ? `page=${page}` : "page=1"}${
+      role ? `&role=${role}` : ""
+    }${limit ? `&limit=${limit}` : ""}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   const data = await res.json();
-
+  data.totalResults = totalCount;
   return data;
 }
 

@@ -9,7 +9,10 @@ function PersonalInformation({ user }) {
       </h1>
       <div className="grid grid-cols-[2fr,2fr,1fr] grid-rows-2">
         <InfoItem head="Name" value={user.name} />
-        <InfoItem head="Email" value={user.email} />
+        <InfoItem
+          head="Email"
+          value={<p className="lowercase">{user.email}</p>}
+        />
         <div className="col-span-1 row-span-3">
           <EditButton />
         </div>

@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import { getToday } from "../utils/getTodayFormatted";
+const today = getToday();
 
 const apiBase = import.meta.env.VITE_REACT_API_LINK;
 const token = Cookies.get("token");
@@ -19,7 +20,9 @@ export async function bookAppointment(body) {
 
 export async function getAllUserAppointments(type, id, date) {
   const res = await fetch(
-    `${apiBase}/appointment?${type}=${id}&${date ? `date=${date}` : ``}`,
+    `${apiBase}/appointment?${type}=${id}&${
+      date ? `date=${date}` : `date[gte]=${today}`
+    }`,
     {
       method: "GET",
       headers: {

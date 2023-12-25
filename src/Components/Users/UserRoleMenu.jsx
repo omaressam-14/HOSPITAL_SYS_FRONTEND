@@ -1,6 +1,12 @@
-function UserRoleMenu({ setActive, activeRole }) {
+import { useSearchParams } from "react-router-dom";
+
+function UserRoleMenu({ setActive, activeRole, setActivePage }) {
+  const [searchParams, setSearchParams] = useSearchParams();
   function handleClick(e) {
     setActive((s) => (s === e.target.value ? "" : e.target.value));
+    searchParams.set("page", 1);
+    setSearchParams(searchParams);
+    setActivePage(1);
   }
 
   return (
