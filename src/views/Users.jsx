@@ -35,7 +35,7 @@ function Users() {
       <SearchBar
         CreateComponent={CreateUserForm}
         setFilteredData={setFilteredData}
-        data={data?.data}
+        data={data?.fullData}
       />
       <UserRoleMenu
         setActivePage={setActivePage}

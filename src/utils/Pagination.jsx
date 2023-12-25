@@ -32,14 +32,14 @@ function Pagination({ count, setActivePage }) {
       <button
         disabled={currentPage === 1}
         onClick={handlePrevPage}
-        className="flex items-center gap-2 text-gray-600 hover:text-white transition-all duration-300 px-2 py-1 rounded-lg bg-transparent hover:bg-indigo-600 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-gray-600">
+        className="flex items-center gap-2 text-gray-600 hover:text-white transition-all duration-300 px-2 py-1 rounded-lg bg-transparent hover:bg-indigo-600 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-gray-400 disabled:text-gray-400">
         <IoIosArrowBack />
         Prev
       </button>
       <button
         disabled={currentPage === pageCount}
         onClick={handleNextPage}
-        className="flex items-center gap-2 text-gray-600 hover:text-white transition-all duration-300 px-2 py-1 rounded-lg bg-transparent hover:bg-indigo-600 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-gray-600">
+        className="flex items-center gap-2 text-gray-600 hover:text-white transition-all duration-300 px-2 py-1 rounded-lg bg-transparent hover:bg-indigo-600 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-gray-400 disabled:text-gray-400">
         Next
         <IoIosArrowForward />
       </button>

@@ -23,6 +23,7 @@ import Rooms from "./views/Rooms";
 import Room from "./views/Room";
 import Users from "./views/Users";
 import User from "./views/User";
+import Page404 from "./views/Page404";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
         <Route path="signin" element={<Signin />} />
         <Route path="about-us" element={<AboutUs />} />
         <Route path="contact-us" element={<ContactUs />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
       <Toaster
         position="top-center"
